@@ -1,0 +1,44 @@
+App.js:- 
+
+export default class App extends Component {
+  render() {
+    const arr = this.props.numbers;
+    const newArr = arr.map((num) => {
+      console.log("Num = ", num);
+      return <li>{num * 2}</li>;
+    });
+    console.log("Old Array = ", arr);
+    console.log("New Array = ", newArr);
+    return (
+      <div>
+        <h3>
+          <ul>{newArr}</ul>
+          <ol>
+            {arr.map((num1) => (
+              <li>{num1 * 3}</li>
+            ))}
+          </ol>
+        </h3>
+      </div>
+    );
+  }
+}
+index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+const arrValues = [10, 20, 30, 40];
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App numbers={arrValues} />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+
+reportWebVitals();
+

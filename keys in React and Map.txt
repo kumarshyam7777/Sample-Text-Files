@@ -1,0 +1,42 @@
+App.js-
+
+import React, { Component } from "react";
+
+class App extends Component {
+  state = {
+    users: [
+      { id: 101, name: "Shyam", password: "XYZ2357" },
+      { id: 102, name: "Rahul", password: "BACR$#%&^&*" },
+      { id: 103, name: "Riju", password: "^%FRDE#@(" },
+    ],
+    isLoggedIn: false,
+  };
+  render() {
+    const newUsers = this.state.users.map((user) => {
+      console.log(user);
+      return (
+        <h3 key={user.id}>
+          ID: {user.id} Name: {user.name} Password: {user.password}
+        </h3>
+      );
+    });
+    return <React.Fragment>{newUsers}</React.Fragment>;
+  }
+}
+export default App;
+
+
+index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);

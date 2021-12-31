@@ -1,0 +1,75 @@
+import React from "react";
+import Guest from "./Guest";
+import User from "./User";
+App.js:-
+
+class App extends React.Component {
+  state = { isLoggedIn: false };
+
+  clickLogin = () => {
+    this.setState({ isLoggedIn: true });
+  };
+
+  clickLogout = () => {
+    this.setState({ isLoggedIn: false });
+  };
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    return (
+      <div>
+        {/* {isLoggedIn ? (
+          <User clickData={this.clickLogout} />
+        ) : (
+          <Guest clickData={this.clickLogin} />
+        )} */}
+
+        {(() => {
+          if (isLoggedIn) {
+            <User clickData={this.clickLogout} />;
+          } else <Guest clickData={this.clickLogin} />;
+        })()}
+      </div>
+    );
+    // if (isLoggedIn) {
+    //   return <User clickData={this.clickLogout} />;
+    // } else {
+    //   return <Guest clickData={this.clickLogin} />;
+    // }
+  }
+}
+export default App;
+
+
+Guest.jsx-
+
+import React from "react";
+import { Fragment } from "react/cjs/react.production.min";
+import './Guest.css'
+
+const Guest = (props) => {
+  return (
+    <Fragment>
+      <h2>Welcome Guest</h2>
+      <button onClick={props.clickData}>LOGIN</button>
+      <button className="signUp">SIGN UP</button>
+    </Fragment>
+  );
+};
+
+export default Guest;
+
+User.jsx:- 
+
+import React from "react";
+
+const User = (props) => {
+  const name = "Shyam";
+  return (
+    <React.Fragment>
+      <h3>Welcome {name} </h3>
+      <button onClick={props.clickData}>LOG OUT</button>
+    </React.Fragment>
+  );
+};
+export default User;
+

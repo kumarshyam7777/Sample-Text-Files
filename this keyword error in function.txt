@@ -1,0 +1,6 @@
+onSubmit={(e) => {
+            e.preventDefault();
+            console.log(this.state.term);
+          }}
+
+Uncaught TypeError: Cannot read properties of undefined (reading 'state')

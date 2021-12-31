@@ -1,0 +1,91 @@
+Guest.jsx-------
+
+import React, { Component } from "react";
+
+class Guest extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <h2>Hello Guest</h2>
+        <button>SIGN IN</button>
+        <button>SIGN UP</button>
+      </React.Fragment>
+    );
+  }
+}
+export default Guest;
+
+
+User.jsx-----
+
+import React, { Component } from "react";
+
+class User extends Component {
+  render() {
+    const user = "Shyam";
+    return (
+      <React.Fragment>
+        <h4>Hello {user}</h4>
+        <button type="button">LOG OUT</button>
+      </React.Fragment>
+    );
+  }
+}
+
+export default User;
+
+PrimeUser.jsx-----
+
+import React, { Component } from "react";
+
+export default class PrimeUser extends Component {
+  render() {
+    return <h3>You are a Prime Member</h3>;
+  }
+}
+
+App.js-------
+
+
+import React, { Component } from "react";
+import User from "./User";
+import Guest from "./Guest";
+import PrimeUser from "./PrimeUser";
+
+class App extends Component {
+  render() {
+    const isRegistered = this.props.consumer;
+    const primeMember = this.props.primeMember;
+    if (isRegistered) {
+      return <User />;
+    }
+
+    return (
+      <React.Fragment>
+        <Guest />
+        <h2>Welcome to the Page is User Prime or Not?</h2>
+        {primeMember && <PrimeUser />}
+      </React.Fragment>
+    );
+  }
+}
+export default App;
+
+index.js--
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App consumer={false} primeMember={false} />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+
+
+
